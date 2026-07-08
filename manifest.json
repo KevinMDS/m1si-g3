@@ -54,6 +54,11 @@
       "name": "Etiquettes.png",
       "path": "files/9-11-captures-du-trello-documents-kkmtm/Etiquettes.png",
       "desc": "Etiquettes utilisées lors du Trello, en lien avec la capture principale du tableau. (Version Proxmox)."
+    },
+    {
+      "name": "Membres.png",
+      "path": "files/9-11-captures-du-trello-documents-kkmtm/Membres.png",
+      "desc": "Liste des membres du Trello, en lien avec la capture principale du tableau. (Version Proxmox)."
     }
   ],
   "9-12-documentation-du-flux-metier-documents-kkmtm": [],
