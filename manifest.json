@@ -22,7 +22,13 @@
       "desc": "Politique de sécurité du système d'information KKMTM."
     }
   ],
-  "9-6-recensement-des-normes-et-reglementations-principales-appliquees-documents-kkmtm": [],
+  "9-6-recensement-des-normes-et-reglementations-principales-appliquees-documents-kkmtm": [
+    {
+      "name": "Referentiel_normatifetreglementaire_cybersecurite_KKMTM.pdf",
+      "path": "files/9-6-recensement-des-normes-et-reglementations-principales-appliquees-documents-kkmtm/Referentiel_normatifetreglementaire_cybersecurite_KKMTM.pdf",
+      "desc": "Référentiel de toutes les normes et réglementations cybersécurité en lien avec notre projet."
+    }
+  ],
   "9-7-pca-pra-documents-kkmtm": [],
   "9-8-ebios-rm-documents-kkmtm": [],
   "9-9-feuille-de-dimensionnement-des-machines-virtuelles-documents-kkmtm": [],
