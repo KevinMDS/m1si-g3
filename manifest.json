@@ -49,6 +49,11 @@
       "name": "Trello_ProxmoxVersion.png",
       "path": "files/9-11-captures-du-trello-documents-kkmtm/Trello_ProxmoxVersion.png",
       "desc": "Capture d'image du Trello lors de la première version de l'Infrastructure sous Proxmox ESGI."
+    },
+    {
+      "name": "Etiquettes.png",
+      "path": "files/9-11-captures-du-trello-documents-kkmtm/Etiquettes.png",
+      "desc": "Etiquettes utilisées lors du Trello, en lien avec la capture principale du tableau. (Version Proxmox)."
     }
   ],
   "9-12-documentation-du-flux-metier-documents-kkmtm": [],
