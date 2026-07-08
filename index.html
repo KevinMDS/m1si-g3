@@ -574,7 +574,6 @@ function renderDocList(channelId) {
       <div class="doc-content">
         <div class="doc-name"><a href="${rawUrl(file.path)}" target="_blank" rel="noopener">${file.name}</a></div>
         ${file.desc ? `<div class="doc-desc">${file.desc}</div>` : ''}
-        <div class="doc-meta">${file.desc || file.name}</div>
       </div>
       ${isAdmin ? `
       <div class="doc-actions">
