@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KKMTM — Annexes du projet annuel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #1a1a1a;
+    --border: #27272a;
+    --text: #f4f4f5;
+    --text-dim: #a1a1aa;
+    --text-muted: #71717a;
+    --accent: #eab308;
+    --accent-bg: rgba(234, 179, 8, 0.1);
+    --success: #22c55e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.025em; }
+  #topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: 64px;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    gap: 24px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+  }
+  #search {
+    flex: 1;
+    max-width: 420px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    padding: 10px 20px;
+    color: white;
+    font-size: 15px;
+    transition: all 0.2s;
+  }
+  #search:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-bg);
+  }
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn:hover {
+    background: var(--surface);
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .admin-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-bg);
+    border: 1px solid rgba(234, 179, 8, 0.35);
+    padding: 6px 12px;
+    border-radius: 9999px;
+  }
+  .main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+  .hero {
+    margin-bottom: 64px;
+  }
+  .hero h1 {
+    font-size: 42px;
+    margin-bottom: 12px;
+  }
+  .hero p {
+    font-size: 17px;
+    color: var(--text-dim);
+    max-width: 620px;
+  }
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    margin-bottom: 80px;
+  }
+  .category-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .category-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  }
+  .category-card .num {
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .category-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .category-card .count {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .section {
+    display: none;
+    margin-bottom: 80px;
+  }
+  .section.active {
+    display: block;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-title {
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .doc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .doc-item {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.2s;
+    gap: 16px;
+  }
+  .doc-item:hover {
+    background: var(--surface2);
+    border-color: #3f3f46;
+  }
+  .doc-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--surface2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .doc-content {
+    flex: 1;
+    min-width: 0;
+  }
+  .doc-name {
+    font-weight: 500;
+    font-size: 15.5px;
+    margin-bottom: 4px;
+  }
+  .doc-name a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .doc-name a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .doc-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .doc-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: monospace;
+  }
+  .doc-actions {
+    opacity: 0;
+    transition: opacity 0.2s;
+    display: flex;
+    gap: 6px;
+  }
+  .doc-item:hover .doc-actions {
+    opacity: 1;
+  }
+  .empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-muted);
+  }
+  .dropzone {
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    color: var(--text-dim);
+    transition: all 0.2s;
+    margin-top: 24px;
+    cursor: pointer;
+  }
+  .dropzone.dragover {
+    border-color: var(--accent);
+    background: var(--accent-bg);
+    color: var(--accent);
+  }
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: none;
+    align-items: center;
+    gap: 12px;
+    z-index: 100;
+  }
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+  }
+  .modal-content {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 420px;
+    padding: 32px;
+  }
+  .modal-content label {
+    display: block;
+    margin: 16px 0 6px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .modal-content input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: white;
+  }
+  .nav-back {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    color: var(--text-dim);
+    cursor: pointer;
+  }
+  input[type="file"].hidden-input {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<div id="topbar">
+  <div class="logo" onclick="goHome()">
+    <i data-lucide="book-open"></i>
+    <span>KKMTM</span>
+  </div>
+  <input type="text" id="search" placeholder="Rechercher dans les annexes..." onkeyup="filterDocs()">
+  <div class="topbar-right">
+    <span class="admin-pill" id="admin-pill" style="display:none;">
+      <i data-lucide="shield-check" style="width:14px;height:14px;"></i> Mode admin
+    </span>
+    <button class="btn" id="settings-btn" onclick="toggleAdminModal()" title="Paramètres GitHub" style="display:none;">
+      <i data-lucide="settings"></i>
+    </button>
+  </div>
+</div>
+<div class="main" id="main-content">
+  <div id="home-view">
+    <div class="hero">
+      <h1>Annexes du projet KKMTM</h1>
+      <p>Documentation technique et annexes du projet annuel de sécurité de l'information, pour le Mastère SI ESGI.</p>
+    </div>
+    <div class="categories-grid" id="categories-grid"></div>
+  </div>
+  <div id="section-view">
+    <div class="nav-back" onclick="goHome()">
+      ← Retour aux catégories
+    </div>
+    <div class="section-header">
+      <div class="section-title" id="section-title"></div>
+      <div id="section-count" style="color: var(--text-muted); font-size: 14px;"></div>
+    </div>
+    <div id="dropzone" class="dropzone" style="display: none;" onclick="triggerFilePicker()">
+      <i data-lucide="upload" style="width: 48px; height: 48px; margin-bottom: 16px;"></i>
+      <p><strong>Glissez des fichiers ici</strong></p>
+      <p style="font-size: 14px;">ou cliquez pour sélectionner</p>
+    </div>
+    <input type="file" id="file-input" class="hidden-input" multiple>
+    <div class="doc-list" id="doc-list"></div>
+  </div>
+</div>
+<div id="toast" class="toast">
+  <span id="toast-text"></span>
+</div>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h3 style="margin-bottom: 20px;">Configuration GitHub</h3>
+    <label>Organisation / Utilisateur</label>
+    <input id="cfg-owner" placeholder="KevinMDS">
+    <label>Nom du dépôt</label>
+    <input id="cfg-repo" placeholder="m1si-g3">
+    <label>Branche</label>
+    <input id="cfg-branch" value="main">
+    <label>Token d'accès personnel (fine-grained)</label>
+    <input id="cfg-token" type="password" placeholder="ghp_... ou github_pat_...">
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;">
+      Le token doit avoir les permissions <strong>Contents: read &amp; write</strong> sur ce dépôt.
+    </p>
+    <div style="margin-top: 28px; display: flex; gap: 12px; justify-content: flex-end;">
+      <button onclick="closeModal()" style="padding: 10px 20px; background: transparent; border: 1px solid var(--border); border-radius: 8px; color: var(--text);">Annuler</button>
+      <button onclick="saveConfig()" style="padding: 10px 24px; background: var(--accent); color: black; font-weight: 600; border: none; border-radius: 8px;">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let DATA = {};
+let manifestSha = null;
+let currentChannel = null;
+let isAdmin = false;
+
+const CATEGORY_TITLES = [
+  "9.1 Schéma de référence du modèle Purdue",
+  "9.2 Schéma de l'architecture cible",
+  "9.3 Schéma de l'architecture réalisée",
+  "9.4 Matrice des flux",
+  "9.5 PSSI",
+  "9.6 Recensement des normes et réglementations principales appliquées",
+  "9.7 PCA / PRA",
+  "9.8 EBIOS Rm",
+  "9.9 Feuille de dimensionnement des machines virtuelles",
+  "9.10 IPAM et plan d'adressage",
+  "9.11 Captures du Trello",
+  "9.12 Documentation du flux métier",
+  "9.13 Captures du SCADA",
+  "9.14 Exemples de journaux et de traces",
+  "9.15 Extraits de configuration utiles",
+  "9.16 Documentation Ansible de déploiement",
+];
+
+const CATEGORIES = CATEGORY_TITLES.map(title => {
+  const slug = title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  return {
+    id: slug,
+    title: title,
+    num: title.match(/^(\d+\.\d+)/)?.[0] || '',
+    channelId: `${slug}-documents-kkmtm`
+  };
+});
+
+CATEGORIES.forEach(cat => DATA[cat.channelId] = []);
+
+const DEFAULT_CONFIG = { owner: 'kevinmds', repo: 'm1si-g3', branch: 'main' };
+
+function getConfig() {
+  try {
+    const stored = JSON.parse(localStorage.getItem('gh_config') || '{}');
+    return { ...DEFAULT_CONFIG, ...stored };
+  } catch(e) { return DEFAULT_CONFIG; }
+}
+
+function setConfig(cfg) {
+  localStorage.setItem('gh_config', JSON.stringify(cfg));
+}
+
+function configReady(cfg) {
+  return !!(cfg.owner && cfg.repo && cfg.token);
+}
+
+async function ghApi(path, options = {}) {
+  const cfg = getConfig();
+  const res = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/${path}`, {
+    ...options,
+    headers: {
+      'Accept': 'application/vnd.github+json',
+      ...(cfg.token ? { 'Authorization': `Bearer ${cfg.token}` } : {}),
+      ...options.headers
+    }
+  });
+  return res;
+}
+
+function rawUrl(path) {
+  const cfg = getConfig();
+  return `https://raw.githubusercontent.com/${cfg.owner}/${cfg.repo}/${cfg.branch}/${path}`;
+}
+
+async function loadManifest() {
+  const cfg = getConfig();
+  if (!cfg.owner || !cfg.repo) return;
+  try {
+    const raw = await fetch(`https://raw.githubusercontent.com/${cfg.owner}/${cfg.repo}/${cfg.branch}/manifest.json?t=${Date.now()}`);
+    if (raw.ok) {
+      const json = await raw.json();
+      Object.keys(json).forEach(k => {
+        if (DATA[k] !== undefined) DATA[k] = json[k];
+      });
+    }
+  } catch(e) {}
+  try {
+    const apiRes = await ghApi(`contents/manifest.json?ref=${cfg.branch}`);
+    if (apiRes.ok) {
+      const j = await apiRes.json();
+      manifestSha = j.sha;
+    } else {
+      manifestSha = null;
+    }
+  } catch(e) {
+    manifestSha = null;
+  }
+}
+
+async function saveManifest() {
+  const cfg = getConfig();
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(DATA, null, 2))));
+  const res = await ghApi('contents/manifest.json', {
+    method: 'PUT',
+    body: JSON.stringify({
+      message: 'Update manifest.json',
+      content,
+      branch: cfg.branch,
+      ...(manifestSha ? { sha: manifestSha } : {})
+    })
+  });
+  if (res.ok) {
+    const j = await res.json();
+    manifestSha = j.content.sha;
+  } else {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || "Échec de la mise à jour du manifest");
+  }
+}
+
+async function getFileSha(path) {
+  const cfg = getConfig();
+  const res = await ghApi(`contents/${encodeURIComponent(path).replace(/%2F/g, '/')}?ref=${cfg.branch}`);
+  if (res.ok) {
+    const j = await res.json();
+    return j.sha;
+  }
+  return null;
+}
+
+function createCategoryCard(cat) {
+  const card = document.createElement('div');
+  card.className = 'category-card';
+  card.innerHTML = `
+    <div class="num">${cat.num}</div>
+    <h3>${cat.title.replace(/^\d+\.\d+\s+/, '')}</h3>
+    <div class="count" id="count-${cat.channelId}">0 document</div>
+  `;
+  card.onclick = () => openSection(cat);
+  return card;
+}
+
+function renderCategories() {
+  const container = document.getElementById('categories-grid');
+  container.innerHTML = '';
+  CATEGORIES.forEach(cat => {
+    container.appendChild(createCategoryCard(cat));
+    updateCount(cat.channelId);
+  });
+}
+
+function updateCount(channelId) {
+  const el = document.getElementById(`count-${channelId}`);
+  if (!el) return;
+  const n = (DATA[channelId] || []).length;
+  el.textContent = `${n} document${n > 1 ? 's' : ''}`;
+}
+
+function renderDocList(channelId) {
+  const container = document.getElementById('doc-list');
+  const files = DATA[channelId] || [];
+  document.getElementById('section-count').textContent = `${files.length} document${files.length > 1 ? 's' : ''}`;
+  if (files.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <i data-lucide="folder-open" style="width: 64px; height: 64px; margin-bottom: 16px; opacity: 0.3;"></i>
+        <p>Aucun document pour le moment</p>
+      </div>`;
+    lucide.createIcons();
+    return;
+  }
+  container.innerHTML = files.map((file, i) => `
+    <div class="doc-item">
+      <div class="doc-icon">
+        <i data-lucide="${getFileIcon(file.path)}"></i>
+      </div>
+      <div class="doc-content">
+        <div class="doc-name"><a href="${rawUrl(file.path)}" target="_blank" rel="noopener">${file.name}</a></div>
+        ${file.desc ? `<div class="doc-desc">${file.desc}</div>` : ''}
+        <div class="doc-meta">${file.path}</div>
+      </div>
+      ${isAdmin ? `
+      <div class="doc-actions">
+        <button class="btn" onclick="editDesc('${channelId}', ${i})" title="Modifier description">
+          <i data-lucide="edit-3" style="width: 18px; height: 18px;"></i>
+        </button>
+        <button class="btn" onclick="removeFile('${channelId}', ${i})" title="Supprimer">
+          <i data-lucide="trash-2" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>` : ''}
+    </div>
+  `).join('');
+  lucide.createIcons();
+}
+
+function getFileIcon(path) {
+  const ext = path.split('.').pop().toLowerCase();
+  if (['pdf'].includes(ext)) return 'file-text';
+  if (['doc','docx'].includes(ext)) return 'file';
+  if (['xlsx','xls','csv'].includes(ext)) return 'table';
+  return 'file';
+}
+
+function openSection(cat) {
+  currentChannel = cat.channelId;
+  document.getElementById('home-view').style.display = 'none';
+  document.getElementById('section-view').style.display = 'block';
+  document.getElementById('section-title').innerHTML = `
+    <span style="color: var(--accent);">${cat.num}</span>
+    ${cat.title.replace(/^\d+\.\d+\s+/, '')}
+  `;
+  renderDocList(cat.channelId);
+  const dropzone = document.getElementById('dropzone');
+  dropzone.style.display = isAdmin ? 'block' : 'none';
+  if (isAdmin) setupDropzone(cat.channelId);
+}
+
+function goHome() {
+  document.getElementById('home-view').style.display = 'block';
+  document.getElementById('section-view').style.display = 'none';
+  currentChannel = null;
+  renderCategories();
+}
+
+function triggerFilePicker() {
+  document.getElementById('file-input').click();
+}
+
+function setupDropzone(channelId) {
+  const dz = document.getElementById('dropzone');
+  dz.ondragover = e => { e.preventDefault(); dz.classList.add('dragover'); };
+  dz.ondragleave = () => dz.classList.remove('dragover');
+  dz.ondrop = e => {
+    e.preventDefault();
+    dz.classList.remove('dragover');
+    handleFiles(channelId, e.dataTransfer.files);
+  };
+  const input = document.getElementById('file-input');
+  input.onchange = () => {
+    if (input.files.length) handleFiles(channelId, input.files);
+    input.value = '';
+  };
+}
+
+async function handleFiles(channelId, files) {
+  const cfg = getConfig();
+  if (!configReady(cfg)) {
+    showToast("Configurez d'abord votre dépôt GitHub (⚙)", "error");
+    return;
+  }
+  for (const file of Array.from(files)) {
+    const desc = window.prompt(`Description pour "${file.name}" (optionnel) :`, '') || '';
+    showToast(`Envoi de ${file.name}...`);
+    try {
+      const path = await uploadFile(channelId, file);
+      const entry = { name: file.name, path, desc };
+      if (!DATA[channelId]) DATA[channelId] = [];
+      const existingIdx = DATA[channelId].findIndex(f => f.path === path);
+      if (existingIdx >= 0) DATA[channelId][existingIdx] = entry;
+      else DATA[channelId].push(entry);
+      await saveManifest();
+      renderDocList(channelId);
+      updateCount(channelId);
+      showToast(`${file.name} ajouté avec succès`, "success");
+    } catch(err) {
+      showToast(`Erreur : ${err.message}`, "error");
+    }
+  }
+}
+
+async function uploadFile(channelId, file) {
+  const cfg = getConfig();
+  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+  const path = `files/${channelId}/${safeName}`;
+  const base64 = await new Promise((res, rej) => {
+    const reader = new FileReader();
+    reader.onload = () => res(reader.result.split(',')[1]);
+    reader.onerror = rej;
+    reader.readAsDataURL(file);
+  });
+  const existingSha = await getFileSha(path);
+  const res = await ghApi(`contents/${path}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      message: `Ajout ${safeName}`,
+      content: base64,
+      branch: cfg.branch,
+      ...(existingSha ? { sha: existingSha } : {})
+    })
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || "Échec de l'upload");
+  }
+  return path;
+}
+
+async function removeFile(channelId, index) {
+  if (!confirm("Supprimer ce fichier ?")) return;
+  const file = DATA[channelId][index];
+  try {
+    const sha = await getFileSha(file.path);
+    if (!sha) throw new Error("Fichier introuvable");
+    const res = await ghApi(`contents/${file.path}`, {
+      method: 'DELETE',
+      body: JSON.stringify({ message: `Suppression ${file.name}`, sha, branch: getConfig().branch })
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.message || "Échec de la suppression");
+    }
+    DATA[channelId].splice(index, 1);
+    await saveManifest();
+    renderDocList(channelId);
+    updateCount(channelId);
+    showToast("Document supprimé", "success");
+  } catch(e) {
+    showToast(`Erreur : ${e.message}`, "error");
+  }
+}
+
+async function editDesc(channelId, index) {
+  const entry = DATA[channelId][index];
+  const newDesc = prompt("Description :", entry.desc || '');
+  if (newDesc === null) return;
+  entry.desc = newDesc;
+  try {
+    await saveManifest();
+    renderDocList(channelId);
+  } catch(err) {
+    showToast(`Erreur : ${err.message}`, "error");
+  }
+}
+
+function toggleAdminModal() {
+  if (!isAdmin) return;
+  const modal = document.getElementById('modal');
+  const cfg = getConfig();
+  document.getElementById('cfg-owner').value = cfg.owner;
+  document.getElementById('cfg-repo').value = cfg.repo;
+  document.getElementById('cfg-branch').value = cfg.branch;
+  document.getElementById('cfg-token').value = cfg.token || '';
+  modal.style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
+function saveConfig() {
+  setConfig({
+    owner: document.getElementById('cfg-owner').value.trim(),
+    repo: document.getElementById('cfg-repo').value.trim(),
+    branch: document.getElementById('cfg-branch').value.trim() || 'main',
+    token: document.getElementById('cfg-token').value.trim()
+  });
+  closeModal();
+  loadManifest().then(() => {
+    if (currentChannel) {
+      renderDocList(currentChannel);
+      const dropzone = document.getElementById('dropzone');
+      dropzone.style.display = isAdmin ? 'block' : 'none';
+      if (isAdmin) setupDropzone(currentChannel);
+    } else {
+      renderCategories();
+    }
+  });
+}
+
+function showToast(message, type = "info") {
+  const toast = document.getElementById('toast');
+  const text = document.getElementById('toast-text');
+  text.textContent = message;
+  toast.style.display = 'flex';
+  toast.style.borderColor = type === "success" ? "#22c55e" : type === "error" ? "#ef4444" : "#eab308";
+  setTimeout(() => toast.style.display = 'none', 4000);
+}
+
+function filterDocs() {
+  const term = document.getElementById('search').value.toLowerCase().trim();
+  if (!currentChannel) return;
+  const items = document.querySelectorAll('.doc-item');
+  items.forEach(item => {
+    const name = item.querySelector('.doc-name').textContent.toLowerCase();
+    item.style.display = name.includes(term) ? '' : 'none';
+  });
+}
+
+async function init() {
+  if (new URLSearchParams(window.location.search).has('admin')) {
+    isAdmin = true;
+    localStorage.setItem('kkmtm_admin', '1');
+    window.history.replaceState({}, '', window.location.pathname);
+  } else if (localStorage.getItem('kkmtm_admin') === '1') {
+    isAdmin = true;
+  }
+
+  if (isAdmin) {
+    document.getElementById('settings-btn').style.display = 'flex';
+    document.getElementById('admin-pill').style.display = 'flex';
+  }
+
+  lucide.createIcons();
+  await loadManifest();
+  renderCategories();
+
+  document.addEventListener('keydown', e => {
+    if (e.key === '/' && document.getElementById('search') !== document.activeElement) {
+      e.preventDefault();
+      document.getElementById('search').focus();
+    }
+  });
+}
+
+init();
+</script>
+</body>
+</html>
