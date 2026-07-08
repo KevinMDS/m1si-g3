@@ -19,6 +19,11 @@
       "name": "matrice_flux_cible.png",
       "path": "files/9-4-matrice-des-flux-documents-kkmtm/matrice_flux_cible.png",
       "desc": "Matrice des flux de l’architecture cible idéale du projet KKMTM, correspondant à une vision complète de l’infrastructure envisagée au-delà du périmètre effectivement réalisé."
+    },
+    {
+      "name": "matrice_flux_realisee.png",
+      "path": "files/9-4-matrice-des-flux-documents-kkmtm/matrice_flux_realisee.png",
+      "desc": "Matrice des flux de l’architecture mise en œuvre dans le cadre du projet KKMTM."
     }
   ],
   "9-5-pssi-documents-kkmtm": [
