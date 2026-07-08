@@ -1,5 +1,11 @@
 {
-  "9-1-schema-de-reference-du-modele-purdue-documents-kkmtm": [],
+  "9-1-schema-de-reference-du-modele-purdue-documents-kkmtm": [
+    {
+      "name": "Modele_Purdue.png",
+      "path": "files/9-1-schema-de-reference-du-modele-purdue-documents-kkmtm/Modele_Purdue.png",
+      "desc": "Schéma de référence du modèle Purdue"
+    }
+  ],
   "9-2-schema-de-l-architecture-cible-documents-kkmtm": [],
   "9-3-schema-de-l-architecture-realisee-documents-kkmtm": [],
   "9-4-matrice-des-flux-documents-kkmtm": [],
