@@ -15,7 +15,13 @@
   ],
   "9-3-schema-de-l-architecture-realisee-documents-kkmtm": [],
   "9-4-matrice-des-flux-documents-kkmtm": [],
-  "9-5-pssi-documents-kkmtm": [],
+  "9-5-pssi-documents-kkmtm": [
+    {
+      "name": "PSSI_KKMTM.pdf",
+      "path": "files/9-5-pssi-documents-kkmtm/PSSI_KKMTM.pdf",
+      "desc": "Politique de sécurité du système d'information KKMTM."
+    }
+  ],
   "9-6-recensement-des-normes-et-reglementations-principales-appliquees-documents-kkmtm": [
     {
       "name": "Referentiel_normatifetreglementaire_cybersecurite_KKMTM.pdf",
