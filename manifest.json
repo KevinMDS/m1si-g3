@@ -54,7 +54,7 @@
     {
       "name": "Trello_ProxmoxVersion.png",
       "path": "files/9-11-captures-du-trello-documents-kkmtm/Trello_ProxmoxVersion.png",
-      "desc": "Capture d'image du Trello lors de la première version de l'Infrastructure sous Proxmox ESGI."
+      "desc": "Première version de l’infra KKMTM, avec un hyperviseur Proxmox dont la configuration réseau a été réinitialisée en cours de projet par l’administrateur IT de l’ESGI."
     },
     {
       "name": "Etiquettes.png",
