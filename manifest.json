@@ -3,7 +3,13 @@
   "9-2-schema-de-l-architecture-cible-documents-kkmtm": [],
   "9-3-schema-de-l-architecture-realisee-documents-kkmtm": [],
   "9-4-matrice-des-flux-documents-kkmtm": [],
-  "9-5-pssi-documents-kkmtm": [],
+  "9-5-pssi-documents-kkmtm": [
+    {
+      "name": "pssi_KKMTM.pdf",
+      "path": "files/9-5-pssi-documents-kkmtm/pssi_KKMTM.pdf",
+      "desc": "Politique de sécurité du système d'information KKMTM."
+    }
+  ],
   "9-6-recensement-des-normes-et-reglementations-principales-appliquees-documents-kkmtm": [],
   "9-7-pca-pra-documents-kkmtm": [],
   "9-8-ebios-rm-documents-kkmtm": [],
