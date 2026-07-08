@@ -6,7 +6,13 @@
       "desc": "Schéma de référence du modèle Purdue"
     }
   ],
-  "9-2-schema-de-l-architecture-cible-documents-kkmtm": [],
+  "9-2-schema-de-l-architecture-cible-documents-kkmtm": [
+    {
+      "name": "schema_reseau_ideale_cible.png",
+      "path": "files/9-2-schema-de-l-architecture-cible-documents-kkmtm/schema_reseau_ideale_cible.png",
+      "desc": "Schéma réseau d'une architecture \"idéale\", représentant le schéma réseau d'une grande entreprise industrielle, avec un budget élevé. Compte comme schéma de référence pour notre infrastructure actuelle."
+    }
+  ],
   "9-3-schema-de-l-architecture-realisee-documents-kkmtm": [],
   "9-4-matrice-des-flux-documents-kkmtm": [],
   "9-5-pssi-documents-kkmtm": [
