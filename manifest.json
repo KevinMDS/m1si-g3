@@ -70,7 +70,13 @@
       "desc": "Démarche EBIOS Rm, réalisée dans le cadre du projet annuel, dans la version Proxmox."
     }
   ],
-  "9-9-feuille-de-dimensionnement-des-machines-virtuelles-documents-kkmtm": [],
+  "9-9-feuille-de-dimensionnement-des-machines-virtuelles-documents-kkmtm": [
+    {
+      "name": "Dimensionnement_vm.png",
+      "path": "files/9-9-feuille-de-dimensionnement-des-machines-virtuelles-documents-kkmtm/Dimensionnement_vm.png",
+      "desc": "Cette image présente la feuille de dimensionnement des machines virtuelles, indiquant les ressources allouées à chaque machine."
+    }
+  ],
   "9-10-ipam-et-plan-d-adressage-documents-kkmtm": [],
   "9-11-captures-du-trello-documents-kkmtm": [
     {
