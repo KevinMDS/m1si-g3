@@ -109,7 +109,11 @@
     }
   ],
   "9-13-captures-du-scada-documents-kkmtm": [],
-  "9-14-exemples-de-journaux-et-de-traces-documents-kkmtm": [],
-  "9-15-extraits-de-configuration-utiles-documents-kkmtm": [],
-  "9-16-documentation-ansible-de-deploiement-documents-kkmtm": []
+  "9-14-documentation-ansible-de-deploiement-documents-kkmtm": [
+    {
+      "name": "deploy.yml.txt",
+      "path": "files/9-14-documentation-ansible-de-deploiement-documents-kkmtm/deploy.yml.txt",
+      "desc": "Documentation Ansible de déploiement, incluant le playbook deploy.yml permettant d'automatiser la création, la configuration et le démarrage de l'ensemble de l'infrastructure virtuelle."
+    }
+  ]
 }
