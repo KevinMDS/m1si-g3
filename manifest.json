@@ -77,7 +77,13 @@
       "desc": "Cette image présente la feuille de dimensionnement des machines virtuelles, indiquant les ressources allouées à chaque machine."
     }
   ],
-  "9-10-ipam-et-plan-d-adressage-documents-kkmtm": [],
+  "9-10-ipam-et-plan-d-adressage-documents-kkmtm": [
+    {
+      "name": "IPAM et plan d'adressage.png",
+      "path": "files/9-10-ipam-et-plan-d-adressage-documents-kkmtm/IPAM_et_plan_d_adressage.png",
+      "desc": "Cette image présente l'IPAM et le plan d'adressage, répertoriant leurs rôles et leurs plages d'adresses IP."
+    }
+  ],
   "9-11-captures-du-trello-documents-kkmtm": [
     {
       "name": "Trello_ProxmoxVersion.png",
