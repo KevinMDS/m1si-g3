@@ -95,7 +95,13 @@
       "desc": "Liste des membres du Trello, en lien avec la capture principale du tableau. (Version Proxmox)."
     }
   ],
-  "9-12-documentation-du-flux-metier-documents-kkmtm": [],
+  "9-12-documentation-du-flux-metier-documents-kkmtm": [
+    {
+      "name": "Documentation du flux métier.png",
+      "path": "files/9-12-documentation-du-flux-metier-documents-kkmtm/Documentation_du_flux_m_tier.png",
+      "desc": "Ce GRAFCET illustre le cycle de fonctionnement du procédé simulé (remplissage et vidange de la cuve piloté par l'automate OpenPLC), détaillant les étapes, actions et conditions de transition régissant la logique métier du laboratoire. "
+    }
+  ],
   "9-13-captures-du-scada-documents-kkmtm": [],
   "9-14-exemples-de-journaux-et-de-traces-documents-kkmtm": [],
   "9-15-extraits-de-configuration-utiles-documents-kkmtm": [],
