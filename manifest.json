@@ -18,7 +18,13 @@
       "desc": "Schéma réseau d’une architecture cible représentant l’infrastructure d’une entreprise industrielle avec des moyens importants. Il constitue une référence théorique pour l’évolution et la comparaison avec notre infrastructure actuelle."
     }
   ],
-  "9-3-schema-de-l-architecture-realisee-documents-kkmtm": [],
+  "9-3-schema-de-l-architecture-realisee-documents-kkmtm": [
+    {
+      "name": "schema_reseau_realise.svg",
+      "path": "files/9-3-schema-de-l-architecture-realisee-documents-kkmtm/schema_reseau_realise.svg",
+      "desc": "Schéma réseau de l’architecture réalisée pour le projet, représentant l’infrastructure choisie en fonction des besoins, des contraintes techniques et des ressources disponibles."
+    }
+  ],
   "9-4-matrice-des-flux-documents-kkmtm": [
     {
       "name": "matrice_flux_cible.png",
