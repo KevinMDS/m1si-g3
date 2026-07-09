@@ -113,7 +113,7 @@
     {
       "name": "deploy.yml.txt",
       "path": "files/9-14-documentation-ansible-de-deploiement-documents-kkmtm/deploy.yml.txt",
-      "desc": "Documentation Ansible de déploiement, incluant le playbook deploy.yml permettant d'automatiser la création, la configuration et le démarrage de l'ensemble de l'infrastructure virtuelle."
+      "desc": "Documentation Ansible de déploiement, incluant le playbook deploy.yml permettant d'automatiser la création, la configuration et le démarrage de l'ensemble de l'infrastructure virtuelle. -\tCommande pour initier le déploiement : ansible-playbook deploy.yml -K"
     }
   ]
 }
