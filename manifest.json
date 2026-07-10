@@ -108,12 +108,11 @@
       "desc": "Ce GRAFCET illustre le cycle de fonctionnement du procédé simulé (remplissage et vidange de la cuve piloté par l'automate OpenPLC), détaillant les étapes, actions et conditions de transition régissant la logique métier du laboratoire. "
     }
   ],
-  "9-13-captures-du-scada-documents-kkmtm": [],
-  "9-14-documentation-ansible-de-deploiement-documents-kkmtm": [
+  "9-13-documentation-ansible-de-deploiement-documents-kkmtm": [
     {
       "name": "deploy.yml.txt",
-      "path": "files/9-14-documentation-ansible-de-deploiement-documents-kkmtm/deploy.yml.txt",
-      "desc": "Documentation Ansible de déploiement, incluant le playbook deploy.yml permettant d'automatiser la création, la configuration et le démarrage de l'ensemble de l'infrastructure virtuelle. -\tCommande pour initier le déploiement : ansible-playbook deploy.yml -K"
+      "path": "files/9-13-documentation-ansible-de-deploiement-documents-kkmtm/deploy.yml.txt",
+      "desc": "Documentation Ansible de déploiement, incluant le playbook deploy.yml permettant d'automatiser la création, la configuration et le démarrage de l'ensemble de l'infrastructure virtuelle."
     }
   ]
 }
