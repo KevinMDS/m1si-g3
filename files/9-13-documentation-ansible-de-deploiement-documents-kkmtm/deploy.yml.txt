@@ -1,0 +1,78 @@
+---
+- name: Infrastructure Purdue Cyber Lab Complete Lifecycle
+  hosts: localhost
+  gather_facts: false
+  become: true
+  vars:
+    dest_disk_dir: "/var/lib/libvirt/images"
+
+    purdue_networks:
+      - { name: 'net-it', bridge: 'vmbr0-it' }
+      - { name: 'net-dmz', bridge: 'vmbr1-dmz' }
+      - { name: 'net-otl3', bridge: 'vmbr2-otl3' }
+      - { name: 'net-otl2', bridge: 'vmbr3-otl2' }
+
+    purdue_vms:
+      - { name: 'dc-ad', ram: '4096', cpu: '4', disk: 'dc_ad.qcow2', nets: ['net-it'] }
+      - { name: 'client-ad', ram: '2048', cpu: '2', disk: 'client_ad.qcow2', nets: ['net-it'] }
+      - { name: 'fw-it-dmz', ram: '1024', cpu: '1', disk: 'fw-it-dmz.qcow2', nets: ['net-it', 'net-dmz'] }
+      - { name: 'bastion', ram: '1024', cpu: '1', disk: 'bastion.qcow2', nets: ['net-dmz'] }
+      - { name: 'siem-ids', ram: '4096', cpu: '2', disk: 'siem_ids.qcow2', nets: ['net-it', 'net-dmz'] }
+      - { name: 'fw-dmz-otl3', ram: '1024', cpu: '1', disk: 'fw-dmz-otl3.qcow2', nets: ['net-dmz', 'net-otl3'] }
+      - { name: 'fw-otl3-otl2', ram: '1024', cpu: '1', disk: 'fw-otl3-otl2.qcow2', nets: ['net-otl3', 'net-otl2'] }
+      - { name: 'scada', ram: '2048', cpu: '2', disk: 'otl3-scada.qcow2', nets: ['net-otl3'] }
+      - { name: 'plc-1', ram: '2048', cpu: '2', disk: 'plc-sim-1.qcow2', nets: ['net-otl2'] }
+
+  tasks:
+    - name: "[CLEANUP] Force stop existing VMs"
+      community.libvirt.virt:
+        command: destroy
+        name: "{{ item.name }}"
+      loop: "{{ purdue_vms }}"
+      failed_when: false
+
+    - name: "[CLEANUP] Undefine existing VMs"
+      community.libvirt.virt:
+        command: undefine
+        name: "{{ item.name }}"
+      loop: "{{ purdue_vms }}"
+      failed_when: false
+
+    - name: "[CLEANUP] Destroy existing networks"
+      community.libvirt.virt_net:
+        command: destroy
+        name: "{{ item.name }}"
+      loop: "{{ purdue_networks }}"
+      failed_when: false
+
+    - name: "[CLEANUP] Undefine existing networks"
+      community.libvirt.virt_net:
+        command: undefine
+        name: "{{ item.name }}"
+      loop: "{{ purdue_networks }}"
+      failed_when: false
+
+    - name: "[NETWORKS] Define Purdue networks from template"
+      community.libvirt.virt_net:
+        command: define
+        name: "{{ item.name }}"
+        xml: "{{ lookup('template', 'templates/net_purdue.xml.j2') }}"
+      loop: "{{ purdue_networks }}"
+
+    - name: "[NETWORKS] Start Purdue networks"
+      community.libvirt.virt_net:
+        command: create
+        name: "{{ item.name }}"
+      loop: "{{ purdue_networks }}"
+
+    - name: "[VMS] Define KVM VMs with correct network mappings"
+      community.libvirt.virt:
+        command: define
+        xml: "{{ lookup('template', 'templates/vm_purdue.xml.j2') }}"
+      loop: "{{ purdue_vms }}"
+
+    - name: "[VMS] Start all VMs"
+      community.libvirt.virt:
+        command: start
+        name: "{{ item.name }}"
+      loop: "{{ purdue_vms }}"
